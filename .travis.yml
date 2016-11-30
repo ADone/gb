@@ -24,8 +24,10 @@ install:
     && chmod +x "$GOPATH/bin/sudo"
 
 script:
-  - go install -v ./...
-    && go test -v ./...
-    && go build
-    && gb test 
-    && ../integration-tests/run-all.bash
+  - bash -xc '
+    go install -v ./...
+    go test -v ./...
+    go build
+    gb test 
+    ../integration-tests/run-all.bash
+    '
